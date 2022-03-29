@@ -3,14 +3,15 @@
 react + typescript
 ***
 ### directory structure
-src
->assets
->   >icons
->   >images
->components
->   >common
->   >routing
->   >{domain}
->hoc
->page
->global
+```bash
+├── assets
+│   ├── icons
+│   └── images
+├── components
+│   ├── common
+│   ├── routes
+│   └── {domain}
+└── hoc
+└── page
+└── global
+``` 
