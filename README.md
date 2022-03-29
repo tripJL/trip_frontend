@@ -1,8 +1,8 @@
 ## 여행 커뮤니티 사이트 FE
-***
+
 react + typescript
-***
-### directory structure
+
+## directory structure
 ```bash
 ├── assets
 │   ├── icons
