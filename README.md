@@ -1,17 +1,18 @@
 ## 여행 커뮤니티 사이트 FE
 
-react + typescript
+react
 
 ## directory structure
+
 ```bash
 ├── assets
 │   ├── icons
 │   └── images
 ├── components
 │   ├── common
-│   ├── routes
+│   ├── routing
 │   └── {domain}
 └── hoc
 └── page
 └── global
-``` 
+```
