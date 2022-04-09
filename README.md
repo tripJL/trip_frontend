@@ -12,7 +12,7 @@ react
 │   ├── common
 │   ├── routing
 │   └── {domain}
-└── hoc
+└── hooks
 └── page
 └── global
 ```
