@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Editor } from "../components/common/Editor";
+import { useEffect, useMemo, useState, useRef } from "react";
 
 const Wrapper = styled.main`
     margin: 60px 0 150px 0;

@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import styled from "styled-components";
-import ReactQuill from "react-quill";
+import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import ImageResize from "quill-image-resize-module-react";
+
+Quill.register("modules/ImageResize", ImageResize);
 
 const Wrapper = styled.div`
     height: auto;
@@ -46,12 +49,19 @@ export const Editor = ({ placeholder, value }) => {
                     ["clean"],
                 ],
                 // handlers: {
-                //     // 이미지 처리는 우리가 직접 imageHandler라는 함수로 처리할 것이다.
                 //     image: imageHandler,
                 // },
             },
+            ImageResize: {
+                parchment: Quill.import("parchment"),
+                modules: ["Resize", "DisplaySize", "Toolbar"],
+            },
         };
     }, []);
+
+    const onChange = () => {
+        console.log();
+    };
 
     useEffect(() => {}, []);
 
@@ -65,6 +75,9 @@ export const Editor = ({ placeholder, value }) => {
                 formats={formats}
                 placeholder={placeholder}
                 value={value}
+                onChange={(content, delta, source, editor) => {
+                    console.log(editor.getHTML());
+                }}
             />
         </Wrapper>
     );
