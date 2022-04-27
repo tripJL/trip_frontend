@@ -5,6 +5,7 @@ import { routes } from "../../global/routes";
 import Join from "../../pages/Join";
 import LogIn from "../../pages/LogIn";
 import Main from "../../pages/Main";
+import WritePost from "../../pages/WritePost";
 
 export const IsNotLogIn = () => {
     return (
@@ -14,6 +15,7 @@ export const IsNotLogIn = () => {
                 <Route path={`${routes.main}`} element={<Main />} />
                 <Route path={`${routes.login}`} element={<LogIn />} />
                 <Route path={`${routes.join}`} element={<Join />} />
+                <Route path={`${routes.writePost}`} element={<WritePost />} />
             </Routes>
             <Footer />
         </Router>

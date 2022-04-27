@@ -15,10 +15,15 @@ const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
 
 root.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <GlobalStyle />
-            <App />
-        </Provider>
-    </React.StrictMode>
+    //react18에서 react quill duplicated toolbars issue로 인해 React.StrictMode 주석처리(일시적으로 해결)
+    // <React.StrictMode>
+    //     <Provider store={store}>
+    //         <GlobalStyle />
+    //         <App />
+    //     </Provider>
+    // </React.StrictMode>
+    <Provider store={store}>
+        <GlobalStyle />
+        <App />
+    </Provider>
 );
