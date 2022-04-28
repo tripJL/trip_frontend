@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Editor } from "../components/common/Editor";
-import { useEffect, useMemo, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Wrapper = styled.main`
     margin: 60px 0 150px 0;
@@ -10,12 +10,30 @@ const Wrapper = styled.main`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    > form {
+        width: auto;
+        height: auto;
+    }
 `;
 
 const WritePost = () => {
+    const editorRef = useRef();
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        const editorz = editorRef.current.getEditor();
+        console.log(editorz.root.innerHTML);
+    };
+
     return (
         <Wrapper>
-            <Editor />
+            <form onSubmit={handleOnSubmit}>
+                <Editor
+                    placeholder={"내용을 입력해주세요"}
+                    editorRef={editorRef}
+                />
+                <button>button</button>
+            </form>
         </Wrapper>
     );
 };
