@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { routes } from "../global/routes";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.main`
     margin: 60px 0 150px 0;
@@ -23,6 +24,8 @@ const Wrapper = styled.main`
 `;
 
 const LogIn = () => {
+    const store_login = useSelector((state) => state?.login.login);
+    console.log(store_login);
     return (
         <Wrapper>
             <Link to={{ pathname: `${routes.login}` }}>로그인</Link>

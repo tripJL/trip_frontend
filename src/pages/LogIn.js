@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { api, routes } from "../global/routes";
+import { useDispatch } from "react-redux";
+import { setLogIn } from "../modules/action/login";
 
 const Wrapper = styled.main`
     width: 100%;
@@ -45,6 +47,7 @@ const Button = styled.button`
 `;
 
 const LogIn = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const LogoToMain = () => {
@@ -58,6 +61,8 @@ const LogIn = () => {
         let formData = new FormData();
         formData.append("id", id.value);
         formData.append("password", password.value);
+        dispatch(setLogIn({ id: id.value, pw: password.value }));
+        LogoToMain();
     };
 
     return (
