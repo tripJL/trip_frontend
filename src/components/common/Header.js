@@ -11,6 +11,7 @@ const Wrapper = styled.header`
     right: 0;
     bottom: 0;
     border-bottom: 1px solid gray;
+    z-index: 9;
 `;
 
 const Logo = styled.div`

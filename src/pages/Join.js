@@ -1,14 +1,27 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { backend } from "../config/axios";
-import { api } from "../global/routes";
+import { api, routes } from "../global/routes";
 
 const Wrapper = styled.main`
-    margin: 60px 0 150px 0;
     width: 100%;
-    height: calc(100vh - 210px);
+    height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    z-index: 900;
+    background-color: white;
+`;
+
+const Logo = styled.div`
+    width: 80px;
+    height: 56px;
+    cursor: pointer;
+    border: 1px solid gray;
+    position: fixed;
+    top: 0px;
+    left: 0px;
 `;
 
 const Form = styled.form`
@@ -49,6 +62,12 @@ const Button2 = styled.button`
 `;
 
 const Join = () => {
+    const navigate = useNavigate();
+
+    const LogoToMain = () => {
+        navigate(routes.main);
+    };
+
     const onSubmitHandler = async (e) => {
         e.preventDefault(e);
         const { id, password } = e.target;
@@ -56,12 +75,11 @@ const Join = () => {
         let formData = new FormData();
         formData.append("id", id.value);
         formData.append("password", password.value);
-
-        // const res = await backend.post(api.login, formData);
     };
 
     return (
         <Wrapper>
+            <Logo onClick={LogoToMain}>메인으로 가기</Logo>
             <Form onSubmit={onSubmitHandler}>
                 <FlexWrapper>
                     <Input2
