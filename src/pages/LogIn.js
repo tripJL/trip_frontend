@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { api, routes } from "../global/routes";
+import { routes } from "../global/routes";
 import { useDispatch } from "react-redux";
 import { setLogIn } from "../modules/action/auth";
 
-const Wrapper = styled.main`
+const Wrapper = styled.section`
     width: 100%;
     height: 100vh;
     display: flex;
@@ -67,8 +67,8 @@ const LogIn = () => {
 
     return (
         <Wrapper>
-            <Logo onClick={LogoToMain}>메인으로 가기</Logo>
             <Form onSubmit={onSubmitHandler}>
+                <Logo onClick={LogoToMain}>메인으로 가기</Logo>
                 <Input
                     type="text"
                     name="id"

@@ -6,6 +6,12 @@ export const GlobalStyle = createGlobalStyle`
     *{
         box-sizing: border-box;
     }
+    main{
+        max-width: 1180px;
+        width: 100%;
+        min-height: calc(100vh - 210px);
+        margin: 60px auto 150px auto;
+    }
     a{
         cursor: pointer;
         text-decoration: none;

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { routes } from "../../global/routes";
 
 const Wrapper = styled.header`
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 60px;
     position: fixed;
@@ -12,6 +14,12 @@ const Wrapper = styled.header`
     bottom: 0;
     border-bottom: 1px solid gray;
     z-index: 9;
+`;
+
+const Contents = styled.div`
+    max-width: 1180px;
+    width: 100%;
+    height: 100%;
 `;
 
 const Logo = styled.div`
@@ -30,7 +38,9 @@ export const Header = () => {
 
     return (
         <Wrapper>
-            <Logo onClick={LogoToMain}>메인으로 가기</Logo>
+            <Contents>
+                <Logo onClick={LogoToMain}>메인으로 가기</Logo>
+            </Contents>
         </Wrapper>
     );
 };

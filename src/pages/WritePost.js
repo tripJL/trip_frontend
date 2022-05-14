@@ -4,9 +4,6 @@ import { useEffect, useState, useRef } from "react";
 import { setBoard } from "../lib/board";
 
 const Wrapper = styled.main`
-    margin: 60px 0 150px 0;
-    width: 100%;
-    height: calc(100vh - 210px);
     display: flex;
     flex-direction: row;
     align-items: center;
