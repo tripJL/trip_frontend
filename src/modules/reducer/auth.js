@@ -1,22 +1,26 @@
-import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR } from "../action/auth";
-import { handleAsyncReducer } from "../../utils/reducerUtils";
+import { LOGIN, JOIN } from "../action/auth";
+import { handleAsyncReducer, reducerUtils } from "../../utils/reducerUtils";
+import { typeSuccess, typeError } from "../../utils/actionUtils";
 
 const initialState = {
-    login: null,
+    login: reducerUtils.initial(null),
+    join: reducerUtils.initial(null),
 };
 
 const reducer = (state = initialState, action) => {
-    // const { type, data } = action;
-    // switch (type) {
-    //     case LOGIN:
-    //         return {
-    //             ...state,
-    //             login: data,
-    //         };
-    //     default:
-    //         return state;
-    // }
-    return handleAsyncReducer(LOGIN, "login", true)(state, action);
+    const { type } = action;
+    switch (type) {
+        case LOGIN:
+        case typeSuccess(LOGIN):
+        case typeError(LOGIN):
+            return handleAsyncReducer(LOGIN, "login", true)(state, action);
+        case JOIN:
+        case typeSuccess(JOIN):
+        case typeError(JOIN):
+            return handleAsyncReducer(JOIN, "join", true)(state, action);
+        default:
+            return state;
+    }
 };
 
 export default reducer;

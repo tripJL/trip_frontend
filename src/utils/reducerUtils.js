@@ -22,32 +22,26 @@ export const reducerUtils = {
 };
 
 //reducer module
-//사용하면 combineReducers에서 error발생
 export const handleAsyncReducer = (type, key, keepData = false) => {
     const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
     return (state, action) => {
         switch (action.type) {
-            // case type:
-            //     return {
-            //         ...state,
-            //         [key]: reducerUtils.loading(
-            //             keepData ? state[key].data : null
-            //         ),
-            //     };
-            // case SUCCESS:
-            //     return {
-            //         ...state,
-            //         [key]: reducerUtils.success(action.data),
-            //     };
-            // case ERROR:
-            //     return {
-            //         ...state,
-            //         [key]: reducerUtils.error(action.data),
-            //     };
             case type:
                 return {
                     ...state,
-                    [key]: action.data,
+                    [key]: reducerUtils.loading(
+                        keepData ? state[key].data : null
+                    ),
+                };
+            case SUCCESS:
+                return {
+                    ...state,
+                    [key]: reducerUtils.success(action.data),
+                };
+            case ERROR:
+                return {
+                    ...state,
+                    [key]: reducerUtils.error(action.data),
                 };
             default:
                 return state;

@@ -6,7 +6,7 @@ export const createPromise = (type, pomiseCreator) => {
     return function* saga(action) {
         try {
             const data = yield call(pomiseCreator, action.data);
-            yield put({ type: SUCCESS, data });
+            yield put({ type: SUCCESS, error: false, data });
         } catch (error) {
             yield put({ type: ERROR, error: true, data: error });
         }
