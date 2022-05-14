@@ -8,7 +8,7 @@ export const routes = {
 export const api = {
     login: "login",
     join: "join",
-    image: "user/add.api",
+    editor: "upload.api",
     board: {
         set: "board/set.api",
         get: "board/gets.api",
