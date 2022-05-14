@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { api, routes } from "../global/routes";
 import { useDispatch } from "react-redux";
-import { setLogIn } from "../modules/action/login";
+import { setLogIn } from "../modules/action/auth";
 
 const Wrapper = styled.main`
     width: 100%;

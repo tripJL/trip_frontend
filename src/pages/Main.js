@@ -25,7 +25,7 @@ const Wrapper = styled.main`
 `;
 
 const LogIn = () => {
-    const store_login = useSelector((state) => state?.login.login);
+    const store_login = useSelector((state) => state?.auth.login);
     console.log(store_login);
     getBoard({ pageIndex: 1, pageSize: 5 });
     return (
