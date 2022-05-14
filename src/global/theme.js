@@ -1,5 +1,6 @@
 const color = {
-    gray1: "#666",
+    gray1: "#66666",
+    white: "#fffff",
 };
 
 const font = {};
