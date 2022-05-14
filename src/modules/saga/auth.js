@@ -1,4 +1,4 @@
 import { takeEvery } from "redux-saga/effects";
-import { LOGIN } from "../action/login";
+import { LOGIN } from "../action/auth";
 
 export function* authSage() {}

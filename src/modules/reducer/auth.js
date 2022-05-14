@@ -1,4 +1,4 @@
-import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR } from "../action/login";
+import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR } from "../action/auth";
 import { handleAsyncReducer } from "../../utils/reducerUtils";
 
 const initialState = {
