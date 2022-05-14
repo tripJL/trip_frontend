@@ -5,6 +5,7 @@ react
 ## directory structure
 
 ```bash
+src
 ├── assets
 │   ├── icons
 │   └── images
@@ -15,4 +16,12 @@ react
 └── hooks
 └── page
 └── global
+└── config
+└── lib
+└── modules
+│   ├── action
+│   ├── reducer
+│   ├── saga
+│   └── index.js
+└── utils
 ```
