@@ -6,7 +6,6 @@ const Wrapper = styled.section`
     width: 100%;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: fixed;
@@ -19,16 +18,16 @@ const Logo = styled.div`
     height: 56px;
     cursor: pointer;
     border: 1px solid gray;
-    position: fixed;
-    top: 0px;
-    left: 0px;
 `;
 
 const Form = styled.form`
+    max-width: 1180px;
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    width: auto;
-    height: auto;
+    align-items: center;
+    justify-content: center;
     > :nth-child(n + 1) {
         margin-top: 10px;
     }
@@ -79,8 +78,8 @@ const Join = () => {
 
     return (
         <Wrapper>
-            <Logo onClick={LogoToMain}>메인으로 가기</Logo>
             <Form onSubmit={onSubmitHandler}>
+                <Logo onClick={LogoToMain}>메인으로 가기</Logo>
                 <FlexWrapper>
                     <Input2
                         type="text"
