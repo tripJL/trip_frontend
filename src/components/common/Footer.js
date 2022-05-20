@@ -5,10 +5,6 @@ const Wrapper = styled.footer`
     justify-content: center;
     width: 100%;
     height: 138px;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background-color: ${(props) => props.theme.gray1};
 `;
 
