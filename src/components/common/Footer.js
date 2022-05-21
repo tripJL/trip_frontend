@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { routes } from "../../global/routes";
+import { useEffect } from "react";
 
 const Wrapper = styled.footer`
     display: flex;
@@ -15,9 +18,19 @@ const Contents = styled.div`
 `;
 
 export const Footer = () => {
-    return (
-        <Wrapper>
-            <Contents>Footer</Contents>
-        </Wrapper>
-    );
+    const location = useLocation();
+
+    useEffect(() => {}, [location]);
+    if (
+        location.pathname !== routes.join &&
+        location.pathname !== routes.login
+    ) {
+        return (
+            <Wrapper>
+                <Contents>Footer</Contents>
+            </Wrapper>
+        );
+    } else {
+        return <></>;
+    }
 };

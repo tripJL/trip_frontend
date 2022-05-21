@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { routes } from "../../global/routes";
+import { useEffect } from "react";
 
 const Wrapper = styled.header`
     display: flex;
@@ -75,21 +76,33 @@ const FlexWrapper = styled.div`
 
 export const Header = () => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const LogoToMain = () => {
         navigate(routes.main);
     };
 
-    return (
-        <Wrapper>
-            <Contents>
-                <Logo onClick={LogoToMain}>Logo</Logo>
-                <FlexWrapper>
-                    <Search>Search</Search>
-                    <Link to={{ pathname: `${routes.login}` }}>로그인</Link>
-                    <Link to={{ pathname: `${routes.join}` }}>회원가입</Link>
-                </FlexWrapper>
-            </Contents>
-        </Wrapper>
-    );
+    useEffect(() => {}, [location]);
+
+    if (
+        location.pathname !== routes.join &&
+        location.pathname !== routes.login
+    ) {
+        return (
+            <Wrapper>
+                <Contents>
+                    <Logo onClick={LogoToMain}>Logo</Logo>
+                    <FlexWrapper>
+                        <Search>Search</Search>
+                        <Link to={{ pathname: `${routes.login}` }}>로그인</Link>
+                        <Link to={{ pathname: `${routes.join}` }}>
+                            회원가입
+                        </Link>
+                    </FlexWrapper>
+                </Contents>
+            </Wrapper>
+        );
+    } else {
+        return <></>;
+    }
 };
