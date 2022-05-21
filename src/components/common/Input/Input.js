@@ -32,7 +32,7 @@ export const Input = ({
 
 Input.defaultProps = {
     width: "340px",
-    height: "40px",
+    height: "50px",
     required: false,
     type: "text",
 };
