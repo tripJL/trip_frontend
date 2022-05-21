@@ -7,16 +7,12 @@ import { Button } from "../components/common/Button/Button";
 import { Label } from "../components/common/Label";
 
 const Wrapper = styled.section`
+    max-width: 1180px;
     width: 100%;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: fixed;
-    z-index: 900;
-    top: 0;
-    bottom: 0;
-    background-color: white;
 `;
 
 const Form = styled.form`

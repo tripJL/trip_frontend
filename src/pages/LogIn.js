@@ -12,17 +12,6 @@ import { Text } from "../components/common/Text";
 import loginImg from "../assets/img/x161.png";
 
 const Wrapper = styled.section`
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    z-index: 900;
-    background-color: white;
-`;
-
-const ContentWrapper = styled.section`
     max-width: 1180px;
     width: 100%;
     height: 100vh;
@@ -30,9 +19,6 @@ const ContentWrapper = styled.section`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    > :nth-child(1) {
-        margin-right: 40px;
-    }
 `;
 
 const ColumnWrapper = styled.div`
@@ -112,51 +98,49 @@ const LogIn = () => {
 
     return (
         <Wrapper>
-            <ContentWrapper>
-                <Image src={loginImg} width={" 676px"} height={"680px"} />
-                <ColumnWrapper>
-                    <Form onSubmit={onSubmitHandler}>
-                        <Logo />
-                        <FlexWrapper>
-                            <Input
-                                type={"text"}
-                                name={"id"}
-                                required={true}
-                                placeholder={"아이디"}
-                            />
-                            <Input
-                                type={"password"}
-                                name={"password"}
-                                required={true}
-                                placeholder={"비밀번호"}
-                            />
-                        </FlexWrapper>
-                        <Text text={"로그인 상태 유지"} margin={"5px 0"} />
-                        <Button type={"submit"} text={"로그인"} />
-                        <Text
-                            text={"아아디 찾기|비밀번호 찾기"}
-                            margin={"10px 0"}
+            <Image src={loginImg} width={" 676px"} height={"680px"} />
+            <ColumnWrapper>
+                <Form onSubmit={onSubmitHandler}>
+                    <Logo />
+                    <FlexWrapper>
+                        <Input
+                            type={"text"}
+                            name={"id"}
+                            required={true}
+                            placeholder={"아이디"}
                         />
-                        <Line>
-                            <div></div>
-                            <Text as={"span"} text={"또는"} />
-                            <div></div>
-                        </Line>
-                        <RowWrapper>
-                            <Icon />
-                            <Icon />
-                            <Icon />
-                            <Icon />
-                        </RowWrapper>
-                    </Form>
-                    <Button
-                        type={"button"}
-                        text={"join"}
-                        width={"440px"}
-                        height={"94px"}
+                        <Input
+                            type={"password"}
+                            name={"password"}
+                            required={true}
+                            placeholder={"비밀번호"}
+                        />
+                    </FlexWrapper>
+                    <Text text={"로그인 상태 유지"} margin={"5px 0"} />
+                    <Button type={"submit"} text={"로그인"} />
+                    <Text
+                        text={"아아디 찾기|비밀번호 찾기"}
+                        margin={"10px 0"}
                     />
-                </ColumnWrapper>
-            </ContentWrapper>
+                    <Line>
+                        <div></div>
+                        <Text as={"span"} text={"또는"} />
+                        <div></div>
+                    </Line>
+                    <RowWrapper>
+                        <Icon />
+                        <Icon />
+                        <Icon />
+                        <Icon />
+                    </RowWrapper>
+                </Form>
+                <Button
+                    type={"button"}
+                    text={"join"}
+                    width={"440px"}
+                    height={"94px"}
+                />
+            </ColumnWrapper>
         </Wrapper>
     );
 };
