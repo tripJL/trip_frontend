@@ -17,6 +17,9 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         color: inherit;
     }
+    h1{
+        font-size: 32px;
+    }
     button{
         cursor: pointer;
         outline: none;
