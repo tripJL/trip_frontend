@@ -9,9 +9,9 @@ const Wrapper = styled.button`
     background-color: ${(props) => props.theme.white};
 `;
 
-export const Button = ({ type, text, width, height }) => {
+export const Button = ({ type, text, width, height, onClick }) => {
     return (
-        <Wrapper type={type} width={width} height={height}>
+        <Wrapper type={type} width={width} height={height} onClick={onClick}>
             {text}
         </Wrapper>
     );
@@ -21,10 +21,12 @@ Button.defaultProps = {
     type: "button",
     width: "340px",
     height: "40px",
+    onClick: () => {},
 };
 
 Button.prototype = {
     type: PropTypes.oneOf(["button", "submit", "reset"]),
     width: PropTypes.string,
     height: PropTypes.string,
+    onClick: PropTypes.func,
 };
