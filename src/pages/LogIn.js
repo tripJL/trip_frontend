@@ -19,6 +19,7 @@ const Wrapper = styled.section`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
 `;
 
 const ColumnWrapper = styled.div`
