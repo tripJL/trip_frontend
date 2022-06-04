@@ -10,7 +10,7 @@ export const api = {
     join: "join",
     editor: "upload.api",
     board: {
-        set: "board/set.api",
+        set: "board/insert.api",
         get: "board/gets.api",
     },
 };
