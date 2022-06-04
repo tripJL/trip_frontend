@@ -13,13 +13,14 @@ const Wrapper = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
 `;
 
 const Form = styled.form`
     max-width: 800px;
     width: 100%;
-    padding: 75px;
-    height: auto;
+    padding: 0 75px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
