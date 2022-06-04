@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import { Editor } from "../components/common/Editor";
 import { useEffect, useState, useRef } from "react";
+import { setBoard } from "../lib/board";
 
 const Wrapper = styled.main`
-    margin: 60px 0 150px 0;
-    width: 100%;
-    height: calc(100vh - 210px);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -23,6 +21,7 @@ const WritePost = () => {
         e.preventDefault();
         const editorz = editorRef.current.getEditor();
         console.log(editorz.root.innerHTML);
+        setBoard({ contents: editorz.root.innerHTML });
     };
 
     return (

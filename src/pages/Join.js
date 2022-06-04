@@ -1,64 +1,50 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { api, routes } from "../global/routes";
+import { routes } from "../global/routes";
+import { Logo } from "../components/common/Logo";
+import { Input } from "../components/common/Input/Input";
+import { Button } from "../components/common/Button/Button";
+import { Label } from "../components/common/Label";
 
-const Wrapper = styled.main`
+const Wrapper = styled.section`
+    max-width: 1180px;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const Form = styled.form`
+    max-width: 800px;
+    width: 100%;
+    padding: 75px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: fixed;
-    z-index: 900;
-    background-color: white;
-`;
-
-const Logo = styled.div`
-    width: 80px;
-    height: 56px;
-    cursor: pointer;
-    border: 1px solid gray;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-`;
-
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    height: auto;
+    border: 1px solid ${(props) => props.theme.gray2};
     > :nth-child(n + 1) {
-        margin-top: 10px;
+        margin-bottom: 15px;
     }
 `;
 
-const FlexWrapper = styled.div`
-    width: auto;
-    height: auto;
+const RowWrapper = styled.div`
+    width: 575px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 `;
 
-const Input = styled.input`
-    width: 300px;
-    height: 35px;
-`;
-
-const Input2 = styled.input`
-    width: 240px;
-    height: 35px;
-`;
-
-const Button = styled.button`
-    width: 300px;
-    height: 35px;
-`;
-
-const Button2 = styled.button`
-    width: 60px;
-    height: 35px;
+const ColumnWrapper = styled.div`
+    width: 575px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    > :nth-child(1) {
+        margin-bottom: 5px;
+    }
 `;
 
 const Join = () => {
@@ -79,57 +65,89 @@ const Join = () => {
 
     return (
         <Wrapper>
-            <Logo onClick={LogoToMain}>메인으로 가기</Logo>
             <Form onSubmit={onSubmitHandler}>
-                <FlexWrapper>
-                    <Input2
-                        type="text"
-                        name="id"
+                <Logo />
+                <ColumnWrapper>
+                    <Label htmlFor={"id"} text={"아이디"} />
+                    <Input
+                        type={"text"}
+                        name={"id"}
                         required={true}
-                        placeholder="아이디"
+                        placeholder={"아이디"}
+                        width={"575px"}
+                        height={"60px"}
                     />
-                    <Button2 type="button">확인</Button2>
-                </FlexWrapper>
-                <Input
-                    type="password"
-                    name="password1"
-                    required={true}
-                    placeholder="비밀번호"
-                />
-                <Input
-                    type="password"
-                    name="password2"
-                    required={true}
-                    placeholder="비밀번호 확인"
-                />
-                <FlexWrapper>
-                    <Input2
-                        type="text"
-                        name="nickname"
+                </ColumnWrapper>
+                <ColumnWrapper>
+                    <Label htmlFor={"password1"} text={"비밀번호"} />
+                    <Input
+                        type={"password"}
+                        name={"password1"}
                         required={true}
-                        placeholder="닉네임"
+                        placeholder={"비밀번호"}
+                        width={"575px"}
+                        height={"60px"}
                     />
-                    <Button2 type="button">확인</Button2>
-                </FlexWrapper>
-                <FlexWrapper>
-                    <Input2
-                        type="email"
-                        name="email"
+                </ColumnWrapper>
+                <ColumnWrapper>
+                    <Label htmlFor={"password2"} text={"비밀번호 확인"} />
+                    <Input
+                        type={"password"}
+                        name={"password2"}
                         required={true}
-                        placeholder="이메일"
+                        placeholder={"비밀번호 확인"}
+                        width={"575px"}
+                        height={"60px"}
                     />
-                    <Button2 type="button">보내기</Button2>
-                </FlexWrapper>
-                <FlexWrapper>
-                    <Input2
-                        type="text"
-                        name="code"
+                </ColumnWrapper>
+                <ColumnWrapper>
+                    <Label htmlFor={"nickname"} text={"닉네임"} />
+                    <Input
+                        type={"text"}
+                        name={"nickname"}
                         required={true}
-                        placeholder="코드입력"
+                        placeholder={"닉네임"}
+                        width={"575px"}
+                        height={"60px"}
                     />
-                    <Button2 type="button">확인</Button2>
-                </FlexWrapper>
-                <Button>회원가입</Button>
+                </ColumnWrapper>
+                <ColumnWrapper>
+                    <Label htmlFor={"email"} text={"이메일"} />
+                    <Input
+                        type={"email"}
+                        name={"email"}
+                        required={true}
+                        placeholder={"이메일"}
+                        width={"575px"}
+                        height={"60px"}
+                    />
+                </ColumnWrapper>
+                <ColumnWrapper>
+                    <Label htmlFor={"email"} text={"이메일"} />
+                    <Input
+                        type={"email"}
+                        name={"email"}
+                        required={true}
+                        placeholder={"이메일"}
+                        width={"575px"}
+                        height={"100px"}
+                    />
+                </ColumnWrapper>
+                <RowWrapper>
+                    <Button
+                        type={"submit"}
+                        text={"회원가입"}
+                        width={"270px"}
+                        height={"70px"}
+                    />
+                    <Button
+                        type={"button"}
+                        text={"취소"}
+                        width={"270px"}
+                        height={"70px"}
+                        onClick={LogoToMain}
+                    />
+                </RowWrapper>
             </Form>
         </Wrapper>
     );

@@ -1,32 +1,65 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { routes } from "../global/routes";
+import { useSelector } from "react-redux";
+import { Banner } from "../components/main/Banner";
+import { Recommend } from "../components/main/Recommend";
+import { Story } from "../components/main/Story";
+import { News } from "../components/main/News";
+//temporary image
+import x1177 from "../assets/img/x1177.png";
+import x1175 from "../assets/img/x1175.png";
 
 const Wrapper = styled.main`
-    margin: 60px 0 150px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const TemporaryList = styled.section`
     width: 100%;
-    height: calc(100vh - 210px);
+    height: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    margin-top: 70px;
+`;
 
-    > a {
-        width: 80px;
-        height: 40px;
-        margin: 0 10px;
-        background-color: rgb(239, 239, 239);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+const NoticeList = styled.section`
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 50px 0 20px 0;
+`;
+
+const TemporaryImg = styled.img`
+    max-width: 575px;
+    max-height: 435px;
 `;
 
 const LogIn = () => {
+    const store_login = useSelector((state) => state?.auth.login);
+    console.log(store_login);
+
     return (
         <Wrapper>
-            <Link to={{ pathname: `${routes.login}` }}>로그인</Link>
-            <Link to={{ pathname: `${routes.join}` }}>회원가입</Link>
+            <Banner />
+
+            <Recommend />
+
+            <TemporaryList>
+                <TemporaryImg src={x1177} />
+                <TemporaryImg src={x1175} />
+            </TemporaryList>
+
+            <NoticeList>
+                <News />
+                <Story />
+            </NoticeList>
         </Wrapper>
     );
 };

@@ -1,7 +1,9 @@
 import React from "react";
 import * as ReactDOMClient from "react-dom/client";
 import App from "./App";
+import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./global/Globalstyles";
+import { theme } from "./global/theme";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { rootReducer, rootSaga } from "./modules";
@@ -23,7 +25,9 @@ root.render(
     //     </Provider>
     // </React.StrictMode>
     <Provider store={store}>
-        <GlobalStyle />
-        <App />
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <App />
+        </ThemeProvider>
     </Provider>
 );

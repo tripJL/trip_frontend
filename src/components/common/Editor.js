@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import ImageResize from "quill-image-resize-module-react";
+import { uploadImage } from "../../lib/image";
 
 Quill.register("modules/ImageResize", ImageResize);
 
@@ -31,13 +32,11 @@ export const Editor = ({ placeholder, editorRef, postId }) => {
         input.addEventListener("change", async () => {
             const file = input.files[0];
             const formData = new FormData();
-            formData.append("img", file);
+            formData.append("attachFile", file);
             try {
                 //image를 server에 임시저장 후 url반환
-                let url = "";
-                // const req = await api.post("path", formData);
-                // url = req.data.url;
-
+                const res = await uploadImage(formData);
+                let url = res.data.body.data.uploadFullUrl;
                 //editor객체를 가져와 해당 커서위치에 image삽입 후 커서 위치 + 1
                 const editor = editorRef.current.getEditor();
                 const range = editor.getSelection();

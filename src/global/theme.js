@@ -1,3 +1,12 @@
-export const color = {};
+const color = {
+    gray1: "#666666",
+    gray2: "#707070",
+    white: "#ffffff",
+};
 
-export const size = {};
+const font = {};
+
+export const theme = {
+    ...color,
+    ...font,
+};
