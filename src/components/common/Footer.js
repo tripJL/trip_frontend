@@ -21,10 +21,7 @@ export const Footer = () => {
     const location = useLocation();
 
     useEffect(() => {}, [location]);
-    if (
-        location.pathname !== routes.join &&
-        location.pathname !== routes.login
-    ) {
+    if (location.pathname !== routes.login) {
         return (
             <Wrapper>
                 <Contents>Footer</Contents>

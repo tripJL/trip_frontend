@@ -1,155 +1,115 @@
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Text } from "../components/common/Text";
+import { theme } from "../global/theme";
 import { routes } from "../global/routes";
-import { Logo } from "../components/common/Logo";
-import { Input } from "../components/common/Input/Input";
-import { Button } from "../components/common/Button/Button";
-import { Label } from "../components/common/Label";
+import { JoinStepOne } from "../components/Join/JoinStepOne";
+import { JoinStepTwo } from "../components/Join/JoinStepTwo";
+import { JoinStepThree } from "../components/Join/JoinStepThree";
 
-const Wrapper = styled.section`
-    max-width: 1180px;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-`;
-
-const Form = styled.form`
-    max-width: 800px;
-    width: 100%;
-    padding: 0 75px;
-    height: 100vh;
+const Wrapper = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border: 1px solid ${(props) => props.theme.gray2};
-    > :nth-child(n + 1) {
-        margin-bottom: 15px;
-    }
 `;
 
-const RowWrapper = styled.div`
-    width: 575px;
+const MenuWrapper = styled.nav`
+    max-width: 875px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 1px solid ${(props) => props.theme.gray2};
+    margin: 100px 0;
 `;
 
-const ColumnWrapper = styled.div`
-    width: 575px;
+const Menu = styled.div`
+    max-width: 250px;
+    width: 100%;
+    height: 90px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    > :nth-child(1) {
-        margin-bottom: 5px;
-    }
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid
+        ${(props) => (props.currStep ? props.theme.black : props.theme.white)};
 `;
+
+const menuList = [
+    { step: 1, name: "약관 동의" },
+    { step: 2, name: "회원정보 입력" },
+    { step: 3, name: "회원가입 완료" },
+];
 
 const Join = () => {
     const navigate = useNavigate();
+    const [step, setStep] = useState(1);
 
-    const LogoToMain = () => {
-        navigate(routes.main);
+    const handleNextStep = () => {
+        if (step < 3) setStep((pre) => pre + 1);
+        else navigate(routes.login);
     };
 
-    const onSubmitHandler = async (e) => {
-        e.preventDefault(e);
-        const { id, password } = e.target;
-
-        let formData = new FormData();
-        formData.append("id", id.value);
-        formData.append("password", password.value);
+    const handlePreStep = () => {
+        if (step > 1) setStep((pre) => pre - 1);
+        else navigate(-1);
     };
+
+    useEffect(() => {}, [step]);
 
     return (
         <Wrapper>
-            <Form onSubmit={onSubmitHandler}>
-                <Logo />
-                <ColumnWrapper>
-                    <Label htmlFor={"id"} text={"아이디"} />
-                    <Input
-                        type={"text"}
-                        name={"id"}
-                        required={true}
-                        placeholder={"아이디"}
-                        width={"575px"}
-                        height={"60px"}
-                    />
-                </ColumnWrapper>
-                <ColumnWrapper>
-                    <Label htmlFor={"password1"} text={"비밀번호"} />
-                    <Input
-                        type={"password"}
-                        name={"password1"}
-                        required={true}
-                        placeholder={"비밀번호"}
-                        width={"575px"}
-                        height={"60px"}
-                    />
-                </ColumnWrapper>
-                <ColumnWrapper>
-                    <Label htmlFor={"password2"} text={"비밀번호 확인"} />
-                    <Input
-                        type={"password"}
-                        name={"password2"}
-                        required={true}
-                        placeholder={"비밀번호 확인"}
-                        width={"575px"}
-                        height={"60px"}
-                    />
-                </ColumnWrapper>
-                <ColumnWrapper>
-                    <Label htmlFor={"nickname"} text={"닉네임"} />
-                    <Input
-                        type={"text"}
-                        name={"nickname"}
-                        required={true}
-                        placeholder={"닉네임"}
-                        width={"575px"}
-                        height={"60px"}
-                    />
-                </ColumnWrapper>
-                <ColumnWrapper>
-                    <Label htmlFor={"email"} text={"이메일"} />
-                    <Input
-                        type={"email"}
-                        name={"email"}
-                        required={true}
-                        placeholder={"이메일"}
-                        width={"575px"}
-                        height={"60px"}
-                    />
-                </ColumnWrapper>
-                <ColumnWrapper>
-                    <Label htmlFor={"email"} text={"이메일"} />
-                    <Input
-                        type={"email"}
-                        name={"email"}
-                        required={true}
-                        placeholder={"이메일"}
-                        width={"575px"}
-                        height={"100px"}
-                    />
-                </ColumnWrapper>
-                <RowWrapper>
-                    <Button
-                        type={"submit"}
-                        text={"회원가입"}
-                        width={"270px"}
-                        height={"70px"}
-                    />
-                    <Button
-                        type={"button"}
-                        text={"취소"}
-                        width={"270px"}
-                        height={"70px"}
-                        onClick={LogoToMain}
-                    />
-                </RowWrapper>
-            </Form>
+            <MenuWrapper>
+                {menuList.map((val) => {
+                    if (step === val.step) {
+                        return (
+                            <Menu key={val.step} currStep={true}>
+                                <Text
+                                    text={val.step}
+                                    color={theme.gray2}
+                                    fs={"25px"}
+                                    margin={"0 0 15px 0"}
+                                />
+                                <Text
+                                    text={val.name}
+                                    color={theme.gray2}
+                                    fs={"16px"}
+                                />
+                            </Menu>
+                        );
+                    } else {
+                        return (
+                            <Menu key={val.step}>
+                                <Text
+                                    text={val.step}
+                                    fc={theme.gray2}
+                                    fs={"25px"}
+                                    margin={"0 0 15px 0"}
+                                />
+                                <Text
+                                    text={val.name}
+                                    fc={theme.gray2}
+                                    fs={"16px"}
+                                />
+                            </Menu>
+                        );
+                    }
+                })}
+            </MenuWrapper>
+            {step === 1 && (
+                <JoinStepOne
+                    handleNextStep={handleNextStep}
+                    handlePreStep={handlePreStep}
+                />
+            )}
+            {step === 2 && (
+                <JoinStepTwo
+                    handleNextStep={handleNextStep}
+                    handlePreStep={handlePreStep}
+                />
+            )}
+            {step === 3 && <JoinStepThree handleNextStep={handleNextStep} />}
         </Wrapper>
     );
 };

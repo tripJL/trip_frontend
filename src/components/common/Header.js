@@ -84,10 +84,7 @@ export const Header = () => {
 
     useEffect(() => {}, [location]);
 
-    if (
-        location.pathname !== routes.join &&
-        location.pathname !== routes.login
-    ) {
+    if (location.pathname !== routes.login) {
         return (
             <Wrapper>
                 <Contents>
