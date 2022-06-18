@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Text } from "../common/Text";
 import { theme } from "../../global/theme";
-import { Button } from "../common/Button/Button";
+import { Button } from "../common/button/Button";
 
 const Wrapper = styled.section`
     width: 100%;

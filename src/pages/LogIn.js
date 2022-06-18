@@ -4,7 +4,7 @@ import { routes } from "../global/routes";
 import { useDispatch } from "react-redux";
 import { setLogIn } from "../modules/action/auth";
 import { Input } from "../components/common/Input/Input";
-import { Button } from "../components/common/Button/Button";
+import { Button } from "../components/common/button/Button";
 import { Image } from "../components/common/Image";
 import { Logo } from "../components/common/Logo";
 import { Icon } from "../components/common/Icon";
