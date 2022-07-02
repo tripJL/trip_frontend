@@ -64,4 +64,4 @@ const Main = () => {
     );
 };
 
-export default LogIn;
+export default Main;
