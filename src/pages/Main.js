@@ -41,7 +41,7 @@ const TemporaryImg = styled.img`
     max-height: 435px;
 `;
 
-const LogIn = () => {
+const Main = () => {
     const store_login = useSelector((state) => state?.auth.login);
     console.log(store_login);
 

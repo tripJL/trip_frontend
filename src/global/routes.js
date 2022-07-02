@@ -1,7 +1,7 @@
 export const routes = {
     main: "/",
-    login: "/Login",
-    join: "/Join",
+    login: "/login",
+    join: "/join",
     writePost: "/writePost",
 };
 
