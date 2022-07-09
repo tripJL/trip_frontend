@@ -1,11 +1,18 @@
-import "../styles/globals.css";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "../styles/GlobalStyles";
+import { theme } from "../styles/theme";
 import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
     return (
-        <Layout>
-            <Component {...pageProps} />
-        </Layout>
+        <>
+            <GlobalStyle />
+            <ThemeProvider theme={theme}>
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
+            </ThemeProvider>
+        </>
     );
 }
 
