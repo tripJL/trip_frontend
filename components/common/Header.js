@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { routes } from "../../shared/routes";
 
 const Wrapper = styled.header`
     width: 100vw;
@@ -27,10 +28,13 @@ const Contents = styled.div`
 const Logo = styled.div`
     width: 100px;
     height: 30px;
-    cursor: pointer;
     border: 2px solid ${(props) => props.theme.gray2};
     text-align: center;
     line-height: 25px;
+    > a {
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 const SearchInput = styled.div`
@@ -65,13 +69,17 @@ export default function Header() {
     return (
         <Wrapper>
             <Contents>
-                <Logo>Logo</Logo>
+                <Logo>
+                    <Link href={routes.home}>
+                        <a className="logo">Logo</a>
+                    </Link>
+                </Logo>
                 <LinkWrapper>
                     <SearchInput>Search</SearchInput>
-                    <Link href={"/login"}>
+                    <Link href={routes.login}>
                         <a>로그인</a>
                     </Link>
-                    <Link href={"/join"}>
+                    <Link href={routes.join}>
                         <a>회원가입</a>
                     </Link>
                 </LinkWrapper>
