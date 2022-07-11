@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Seo from "../components/common/Seo";
-import { routes } from "../shared/routes";
+import { head } from "../shared/routes";
 import Img from "../components/common/Img";
 import LoginInput from "../components/common/input/LoginInput";
 import LoginButton from "../components/common/button/LoginButton";
@@ -82,7 +82,8 @@ const socialArr = ["1", "2", "3", "4"];
 export default function Login() {
     return (
         <Wrapper>
-            <Seo title={"login"} />
+            <Seo title={head.login} />
+
             <Img src={"/x161.png"} width={"676px"} height={"680px"} />
             <FormWrapper>
                 <Form>

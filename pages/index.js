@@ -5,6 +5,7 @@ import Recommend from "../components/main/Recommend";
 import Story from "../components/main/Story";
 import News from "../components/main/News";
 import Image from "next/image";
+import { head } from "../shared/routes";
 
 const Wrapper = styled.div`
     display: flex;
@@ -43,7 +44,7 @@ const NoticeList = styled.section`
 export default function Home() {
     return (
         <Wrapper>
-            <Seo />
+            <Seo title={head.home} />
 
             <Banner />
 
