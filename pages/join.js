@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import { head } from "../shared/routes";
 import { useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import Seo from "../components/common/Seo";
+import { routes } from "../shared/routes";
+import JoinStepOne from "../components/join/JoinStepOne";
+import JoinStepTwo from "../components/join/JoinStepTwo";
+import JoinStepThree from "../components/join/JoinStepThree";
+import Text from "../components/common/Text";
 
 const Wrapper = styled.section`
     display: flex;
@@ -39,18 +44,19 @@ const menuList = [
 ];
 
 export default function Join() {
-    // const navigate = useNavigate();
-    const [step, setStep] = useState(1);
+    const router = useRouter();
 
-    // const handleNextStep = () => {
-    //     if (step < 3) setStep((pre) => pre + 1);
-    //     else navigate(routes.login);
-    // };
+    const [step, setStep] = useState(2);
 
-    // const handlePreStep = () => {
-    //     if (step > 1) setStep((pre) => pre - 1);
-    //     else navigate(-1);
-    // };
+    const handleNextStep = () => {
+        if (step < 3) setStep((pre) => pre + 1);
+        else router.push(routes.login);
+    };
+
+    const handlePreStep = () => {
+        if (step > 1) setStep((pre) => pre - 1);
+        else router.push(-1);
+    };
 
     return (
         <Wrapper>
@@ -58,54 +64,31 @@ export default function Join() {
 
             <MenuWrapper>
                 {menuList.map((val) => {
-                    if (step === val.step) {
-                        return (
-                            <Menu key={val.step} currStep={true}>
-                                {/* <Text
-                                    text={val.step}
-                                    color={theme.gray2}
-                                    fs={"25px"}
-                                    margin={"0 0 15px 0"}
-                                />
-                                <Text
-                                    text={val.name}
-                                    color={theme.gray2}
-                                    fs={"16px"}
-                                /> */}
-                            </Menu>
-                        );
-                    } else {
-                        return (
-                            <Menu key={val.step}>
-                                {/* <Text
-                                    text={val.step}
-                                    fc={theme.gray2}
-                                    fs={"25px"}
-                                    margin={"0 0 15px 0"}
-                                />
-                                <Text
-                                    text={val.name}
-                                    fc={theme.gray2}
-                                    fs={"16px"}
-                                /> */}
-                            </Menu>
-                        );
-                    }
+                    return (
+                        <Menu key={val.step} currStep={val.step === step}>
+                            <Text
+                                text={val.step}
+                                styles={`font-size: 25px; margin-bottom: 15px;`}
+                            />
+                            <Text text={val.name} styles={`font-size: 16px;`} />
+                        </Menu>
+                    );
                 })}
             </MenuWrapper>
-            {/* {step === 1 && (
-                    <JoinStepOne
-                        handleNextStep={handleNextStep}
-                        handlePreStep={handlePreStep}
-                    />
-                )}
-                {step === 2 && (
-                    <JoinStepTwo
-                        handleNextStep={handleNextStep}
-                        handlePreStep={handlePreStep}
-                    />
-                )}
-                {step === 3 && <JoinStepThree handleNextStep={handleNextStep} />} */}
+
+            {step === 1 && (
+                <JoinStepOne
+                    handleNextStep={handleNextStep}
+                    handlePreStep={handlePreStep}
+                />
+            )}
+            {step === 2 && (
+                <JoinStepTwo
+                    handleNextStep={handleNextStep}
+                    handlePreStep={handlePreStep}
+                />
+            )}
+            {step === 3 && <JoinStepThree handleNextStep={handleNextStep} />}
         </Wrapper>
     );
 }
