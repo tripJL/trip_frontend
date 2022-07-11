@@ -11,8 +11,6 @@ const Wrapper = styled.div`
     cursor: pointer;
 `;
 
-const SocialButton = ({ children }) => {
+export default function SocialButton({ children }) {
     return <Wrapper>{children}</Wrapper>;
-};
-
-export default SocialButton;
+}
