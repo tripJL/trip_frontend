@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import JoinInput from "../common/input/JoinInput";
 import LoginButton from "../common/button/LoginButton";
+import EmailInput from "../common/input/EmailInput";
 import Text from "../common/Text";
 
 const Wrapper = styled.section`
@@ -60,7 +61,7 @@ export default function JoinStepTwo({ handleNextStep, handlePreStep }) {
                     return (
                         <FlexWrapper id={idx}>
                             <div>{val.label}</div>
-                            <JoinInput
+                            <EmailInput
                                 name={val.name}
                                 placeholder={val.placeholder}
                             />

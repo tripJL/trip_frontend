@@ -46,7 +46,7 @@ const menuList = [
 export default function Join() {
     const router = useRouter();
 
-    const [step, setStep] = useState(2);
+    const [step, setStep] = useState(1);
 
     const handleNextStep = () => {
         if (step < 3) setStep((pre) => pre + 1);
